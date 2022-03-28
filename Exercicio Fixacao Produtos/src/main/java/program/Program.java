@@ -29,23 +29,22 @@ public class Program {
             String name = scan.next();
             System.out.print("Price: ");
             double price = scan.nextDouble();
-            switch (type){
-                case 'c':
-                    products.add(new Product(name, price));
-                    break;
-                case 'u':
+            switch (type) {
+                case 'c' -> products.add(new Product(name, price));
+                case 'u' -> {
                     System.out.print("Manufacture date (DD/MM/YYYY):");
                     String dateProduct = scan.next();
                     products.add(new UsedProduct(name, price, date.parse(dateProduct)));
-                    break;
-                case 'i':
+                }
+                case 'i' -> {
                     System.out.print("Customs fee: ");
                     double customsFee = scan.nextDouble();
                     products.add(new ImportedProduct(name, price, customsFee));
-                    break;
-                default:
+                }
+                default -> {
                     System.out.println("Null type");
-                    i-=1;
+                    i -= 1;
+                }
             }
         }
         for (Product p:products) {
